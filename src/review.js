@@ -5,3 +5,9 @@
 - virtual ReactDOM
 - ReactDOM.render()
 - jsx`;
+
+`2-dars
+- props, components
+- export import
+- props, children
+- components`;
