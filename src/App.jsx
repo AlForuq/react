@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class App extends React.Component {
       selection: "name",
 
       active: null,
+
+      mode: false,
     };
   }
 
@@ -92,8 +95,32 @@ class App extends React.Component {
       this.setState({ [name]: value });
     };
 
+    const GlobalStyle = createGlobalStyle`
+      body{
+        background-color: ${(props) => props.theme.bg};
+        color: ${(props) => props.theme.cl};
+        
+      }
+
+      table{
+        border-color: ${(props) => props.theme.bc};
+      }
+    `;
+
+    const theme = {
+      bg: this.state.mode ? "white" : "#333",
+      cl: this.state.mode ? "#333" : "white",
+      bc: this.state.mode ? "blue" : "yellow",
+    };
+
     return (
-      <div>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+
+        <button onClick={() => this.setState({ mode: !this.state.mode })}>
+          Mode
+        </button>
+        <hr />
         <input
           value={this.state.name}
           name="name"
@@ -173,7 +200,7 @@ class App extends React.Component {
             </tbody>
           </table>
         </div>
-      </div>
+      </ThemeProvider>
     );
   }
 }
