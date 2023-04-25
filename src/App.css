@@ -41,18 +41,7 @@
   cursor: pointer;
   margin-left: 30px;
 }
-.link:hover {
-  transform: scale(1.1);
-}
 
-.link:active {
-  color: darkgreen;
-}
-
-.active {
-  color: green;
-}
-
-.con {
-  display: flex;
+h5 {
+  cursor: pointer;
 }
